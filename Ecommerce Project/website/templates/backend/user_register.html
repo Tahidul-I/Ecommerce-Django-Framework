@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% load static %}
+   <head>
+      <!-- basic -->
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <!-- mobile metas -->
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+      <!-- site metas -->
+      <title>Pluto - Responsive Bootstrap Admin Panel Templates</title>
+      <meta name="keywords" content="">
+      <meta name="description" content="">
+      <meta name="author" content="">
+      <!-- site icon -->
+      <link rel="icon" href="images/fevicon.png" type="image/png" />
+      <!-- bootstrap css -->
+      <link rel="stylesheet" href="{% static 'backend/css/bootstrap.min.css' %}" />
+      <!-- site css -->
+      <link rel="stylesheet" href="{% static 'backend/style.css' %}" />
+      <!-- responsive css -->
+      <link rel="stylesheet" href="{% static 'backend/css/responsive.css' %}" />
+      <!-- color css -->
+      <link rel="stylesheet" href="{% static 'backend/css/colors.css' %}" />
+      <!-- select bootstrap -->
+      <link rel="stylesheet" href="{% static 'backend/css/bootstrap-select.css' %}" />
+      <!-- scrollbar css -->
+      <link rel="stylesheet" href="{% static 'backend/css/perfect-scrollbar.css' %}" />
+      <!-- custom css -->
+      <link rel="stylesheet" href="{% static 'backend/css/custom.css' %}" />
+      <!-- calendar file css -->
+      <link rel="stylesheet" href="{% static 'backend/js/semantic.min.css' %}" />
+      <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+      <![endif]-->
+   </head>
+   <body class="inner_page login">
+      <div class="full_container">
+         <div class="container">
+            <div class="center verticle_center full_height">
+               <div class="login_section">
+                  <div class="logo_login">
+                     <div class="center">
+                        <img width="210" src="{% static 'backend/images/logo/logo.png' %}" alt="#" />
+                     </div>
+                  </div>
+                  <div class="signup_form">
+                     <form method="post" action="{% url 'user_registration'%}" enctype="multipart/form-data">
+                         {% csrf_token %}
+
+                        
+                           <div class="form-group">
+                              <label class="label_field ">Username</label>
+                              <input type="text" class="form-control" name="username" placeholder="Username" />
+                           </div>
+                           <div class="form-group">
+                              <label class="label_field">Email Address</label>
+                              <input type="email" class="form-control" name="email" placeholder="E-mail" />
+                           </div>
+                           <div class="form-group">
+                              <label class="label_field">Password</label><br>
+                              <input type="password" class="form-control" name="password" placeholder="Password" />
+                           </div>
+                           <div class="form-group">
+                              <label class="label_field">Confirm Password</label><br>
+                              <input type="password" class="form-control" name="conf_pass" placeholder="Password" />
+                           </div>
+                           <div class="form-group">
+                              <label>upload Image</label>
+                              <input type="file" name="user_register_image" class="form-control">
+                           </div>
+
+                          
+                           <div class="form-group margin_0">
+                              <label class="label_field hidden">hidden label</label>
+                              <button class="main_bt">Sing Up</button>
+                           </div>
+                        
+                     </form>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- jQuery -->
+      <script src="{% static 'backend/js/jquery.min.js' %}"></script>
+      <script src="{% static 'backend/js/popper.min.js' %}"></script>
+      <script src="{% static 'backend/js/bootstrap.min.js' %}"></script>
+      <!-- wow animation -->
+      <script src="{% static 'backend/js/animate.js' %}"></script>
+      <!-- select country -->
+      <script src="{% static 'backend/js/bootstrap-select.js' %}"></script>
+      <!-- nice scrollbar -->
+      <script src="{% static 'backend/js/perfect-scrollbar.min.js' %}"></script>
+      <script>
+         var ps = new PerfectScrollbar('#sidebar');
+      </script>
+      <!-- custom js -->
+      <script src="{% static 'backend/js/custom.js' %}"></script>
+   </body>
+</html>

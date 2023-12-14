@@ -1,0 +1,61 @@
+{% extends 'backend/dashboard.html'%}
+
+{% block content %}
+
+<div class="bootstrap-data-table-panel content-wrap">
+    <a href="{% url 'category_product' %}"><button class="btn btn-success">Add Product Category</button></a>
+    <a href="{% url 'product_detail' %}"><button class="btn btn-success">Add Product Details</button></a>
+    <div class="table-responsive">
+        <table id="row-select" class="display table table-borderd table-hover ">
+            <thead>
+                <tr class="text-center">
+                    <th>Product Category</th>
+                    <th>Product Caption</th>
+                    <th>Old Price</th>
+                    <th>New Price</th>
+                    <th>Description</th>
+                    <th>Product Images</th>
+                    <th>Product Feature  Image</th>
+                    <th>Carousel Status </th>
+    
+            
+                    <th colspan="2">Action</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for i in product_data %}
+                <tr class="text-center">
+                    <td>{{i.category_name.catagory}}</td>
+                    <td>{{i.product_caption}}</td>
+                    <td>{{i.old_price}}</td>
+                    <td>{{i.new_price}}</td>
+                    <td>{{i.description}}</td>
+                    <td>
+                        
+                        {% for j in i.product.all %}
+                        <img src="/media/{{j.pro_images}}" style="height:100px;width:80px;"><br>
+                        {% endfor %}
+                    </td>
+                    <td><img src="/media/{{i.prod_fiture_ima}}" style="height:100px;width:80px;"></td>
+                    {% if i.carousel_status == False %}
+                    <td><button type="button" class="btn btn-danger btn-sm"><a href="{% url 'carousel_data' i.id %}" style="text-decoration: none; color: white;">Add</a></button></td>
+                    {% else %}
+                    <td><button type="button" class="btn btn-danger btn-sm"><a href="{% url 'carousel_data' i.id %}" style="text-decoration: none; color: white;">Remove</a></button></td>
+                    {% endif %}
+                    
+
+                    <td><a href="{% url 'product_detail_edit' i.id %}"><i class="bi bi-pencil-square text-light"></i></a></td>
+                    <td><a href="{% url 'product_delete' i.id %}"><i class="bi bi-trash-fill text-light"></i></a></td>
+                    
+                    
+
+                    
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock%}

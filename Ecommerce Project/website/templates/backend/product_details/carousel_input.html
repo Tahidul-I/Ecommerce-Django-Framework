@@ -1,0 +1,40 @@
+{% extends 'backend/dashboard.html' %}
+
+{% block content %}
+
+<div class="container Wrapper mt-3">
+    <form method="post" action="{% url 'carousel_input_view'%}" enctype="multipart/form-data">
+        {% csrf_token %}
+
+       
+          <div class="form-group">
+             <label class="label_field ">Product Name </label>
+             <input type="text" class="form-control" name="product_name" placeholder="Product Name" />
+          </div>
+          <div class="form-group mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label">Product Description</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" name="description" rows="3"></textarea>
+        
+          </div>
+          
+          <div class="form-group">
+             <label class="label_field">Product original Price </label><br>
+             <input type="number" class="form-control" name="orginal_price" placeholder="Original Price" />
+          </div>
+          <div class="form-group">
+             <label class="label_field">Give discount percentage</label><br>
+             <input type="number" class="form-control" name="discount" placeholder="Only enter value" />
+          </div>
+        
+          <div class="form-group">
+             <label>upload Image</label>
+             <input type="file" name="carousel_image" class="form-control">
+          </div>
+          <button class="btn btn-primary btn-lg w-15" type="submit">Add</button>
+
+         
+    
+       
+    </form>
+
+{% endblock %}

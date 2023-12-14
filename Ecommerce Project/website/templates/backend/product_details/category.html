@@ -1,0 +1,23 @@
+{% extends 'backend/dashboard.html'%}
+
+{% block content %}
+<div class="content-wrap">
+    <div class="ml-5 mt-3">
+        <form method="post" action="{% url 'category_product'%}" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-group">
+                <label>Add category Name</label>
+                <input type="text" name="category_name" class="form-control" placeholder="Add Category">
+            </div>
+            <div class="form-group">
+                <label>Add Category Feature Image</label>
+                <input type="file" name="feature_image" class="form-control">
+            </div>
+            
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+    
+    </div>
+</div>
+
+    {% endblock %}

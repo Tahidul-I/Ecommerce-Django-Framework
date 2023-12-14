@@ -1,0 +1,39 @@
+{% extends 'backend/dashboard.html'%}
+
+{% block content %}
+
+<div class="bootstrap-data-table-panel content-wrap">
+    <a href="{% url 'category_product' %}"><button class="btn btn-success">Add Product Category</button></a>
+
+    <div class="table-responsive">
+        <table id="row-select" class="display table table-borderd table-hover ">
+            <thead>
+                <tr class="text-center">
+                    <th> Category Name</th>
+                  
+    
+            
+                    <th colspan="2">Action</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for i in category_data %}
+                <tr class="text-center">
+                    <td>{{i.catagory}}</td>
+                    
+                    
+                    <td><a href="#"><i class="bi bi-pencil-square"></i></a></td>
+                    <td><a href="#"><i class="bi bi-trash-fill"></i></a></td>
+                    
+                    
+
+                    
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock%}

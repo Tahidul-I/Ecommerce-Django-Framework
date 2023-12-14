@@ -1,0 +1,29 @@
+{% extends 'backend/dashboard.html'%}
+
+{% block content %}
+<div class="content-wrap">
+    <div class="ml-5 mt-3">
+        <form method="post" action="{% url 'carousel_data' data.id %}" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-group">
+                <label>Add Super Caption For Carousel</label>
+                <input type="text" name="caption" class="form-control" placeholder="Add Caption">
+            </div>
+            
+            <div class="form-group">
+                <label>Dicount Percentage </label>
+                <input type="number" name="discount" class="form-control" placeholder="Only give value ">
+            </div>
+            
+            <div class="form-group">
+                <label>Add a feature image for carousel shocasing</label>
+                <input type="file" name="carousel_fiture_image" class="form-control" required>
+            </div>
+           
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+    
+    </div>
+</div>
+
+    {% endblock %}

@@ -1,0 +1,47 @@
+{% extends 'backend/dashboard.html'%}
+
+{% block content %}
+
+<div class="bootstrap-data-table-panel content-wrap mt-5">
+    <a href="{% url 'carousel_input_view' %}"><button class="btn btn-success">Add product to shoow in carousel </button></a>
+    <div class="table-responsive">
+        <table id="row-select" class="display table table-borderd table-hover ">
+            <thead>
+                <tr class="text-center">
+                    <th>#</th>
+                    <th>Product Name</th>
+                    <th>Description</th>
+                    <th>Original Price</th>
+                    <th>Given Discount</th>
+                    <th>Discounted Price</th>
+                    <th>Product Image</th>
+                    <th colspan="2">Action</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for i in product_data %}
+                <tr class="text-center">
+                    <td>{{forloop.counter}}</td>
+                    <td>{{i.product_name}}</td>
+                    <td>{{i.description}}</td>
+                    <td>{{i.original_price}}</td>
+                    <td>{{i.dicount}}%</td>
+                    <td>{{i.dicounted_price}}</td>
+                   
+                    <td><img src="/media/{{i.carousel_image}}" style="height:100px;width:80px;"></td>
+
+                    <td><a href="{% url 'edit_carousel_data' i.id %}"><i class="bi bi-pencil-square text-light"></i></a></td>
+                    <td><a href="{% url 'delete_carousel_data' i.id %}"><i class="bi bi-trash-fill text-light"></i></a></td>
+                    
+                    
+
+                    
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock%}

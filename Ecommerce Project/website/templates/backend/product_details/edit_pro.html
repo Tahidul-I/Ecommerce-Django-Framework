@@ -1,0 +1,55 @@
+{% extends 'backend/dashboard.html'%}
+
+{% block content %}
+<div class="content-wrap">
+    <div class="ml-5 mt-3">
+        {% for data in data %}
+        <form method="post" action="{% url 'product_detail_edit' data.id%}" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-group">
+                <label>Add Product Caption</label>
+                <input type="text" name="caption" class="form-control" placeholder="Add Caption" value="{{data.product_caption}}">
+            </div>
+            <div class="form-group">
+                <label>Product Category</label>
+                <select class="form-select" aria-label="Default select example" name="category_name">
+    
+                    
+                    {% for i in category_data %}
+                    <option {% if data.category_name_id == i.id %} selected {% endif %} value="{{i.id}}">{{i.catagory}}</option>
+                    {% endfor %}
+                  </select>
+            </div>
+            <div class="form-group">
+                <label>Product Old Price</label>
+                <input type="text" name="old_price" class="form-control" placeholder="Old price" value="{{data.old_price}}">
+            </div>
+            <div class="form-group">
+                <label>Product new Price</label>
+                <input type="text" name="new_price" class="form-control" placeholder="new price" value="{{data.new_price}}">
+            </div>
+            <div class="form-group">
+                <label>Add Product Description</label>
+                <textarea name="description" rows="4" cols="50">{{data.description}}</textarea>
+            </div>
+            <div class="form-group">
+                <label>Add Product Feature Images</label>
+                <input type="file" name="fiture_image" class="form-control" required >
+                <input type="text" name="fiture_image_1" class="form-control" value="{{data.prod_fiture_ima}}" hidden >
+            </div>
+           
+            <div class="form-group">
+                <label>Add Product Images(select all image at a time)</label>
+                <input type="file" name="product_image" class="form-control" multiple required>
+                
+                <input type="text" name="product_image_1" class="form-control" multiple required value="{{data.product.all}}" hidden>
+                
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+          {% endfor %}
+    
+    </div>
+</div>
+
+    {% endblock %}

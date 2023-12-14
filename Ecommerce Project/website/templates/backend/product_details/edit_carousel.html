@@ -1,0 +1,44 @@
+{% extends 'backend/dashboard.html' %}
+
+{% block content %}
+
+<div class="container Wrapper mt-3">
+    <form method="post" action="{% url 'edit_carousel_data' product_data.id %}" enctype="multipart/form-data">
+        {% csrf_token %}
+
+       
+          <div class="form-group">
+             <label class="label_field ">Product Name </label>
+             <input type="text" class="form-control" value="{{product_data.product_name}}" name="product_name" placeholder="Product Name" />
+          </div>
+          <div class="form-group mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label">Product Description</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" name="description" rows="3">{{product_data.description}}</textarea>
+        
+          </div>
+          
+          <div class="form-group">
+             <label class="label_field">Product original Price </label><br>
+             <input type="number" class="form-control" name="orginal_price" value="{{product_data.original_price}}" placeholder="Original Price" />
+          </div>
+          <div class="form-group">
+             <label class="label_field">Give discount percentage</label><br>
+             <input type="number" class="form-control" name="discount" value="{{product_data.dicount}}" placeholder="Only enter value" />
+          </div>
+          <div class="form-group">
+            <label>Current Image</label>
+            <img src="/media/{{product_data.carousel_image}}" height="100px" width="100px">
+         </div>
+        
+          <div class="form-group">
+             <label>upload Image</label>
+             <input type="text" value="{{product_data.carousel_image}}" name="carousel_image" class="form-control" hidden>
+             <input type="file" name="carousel_image_2" class="form-control">
+          </div>
+          <button class="btn btn-primary btn-lg w-15" type="submit">Edit</button>   
+       
+    </form>
+</div>
+
+{% endblock %}
+    
